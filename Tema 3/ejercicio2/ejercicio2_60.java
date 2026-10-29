@@ -1,3 +1,5 @@
+package ejercicio2;
+
 import java.util.Scanner;
 public class ejercicio2_60 {
     public static void main(String[] args) {

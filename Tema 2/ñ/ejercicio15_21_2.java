@@ -12,7 +12,7 @@ public  class ejercicio15_21_2 {
         }
 
         System.out.println("Al revés");
-        for ( int n=numero; numero >= 1; numero-- ) {
+        for ( int n= numero; numero >= 1; numero-- ) {
             System.out.println(numero);
 
 
