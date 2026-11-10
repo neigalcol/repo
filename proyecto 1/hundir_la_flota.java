@@ -13,35 +13,37 @@ public class hundir_la_flota {
         System.out.println("Introduce tu nombre: ");
         String nombre = sc.nextLine();
 
-        char[][] tablero = new char[10][10];
+        char[][] tableroJugador = new char[10][10];
         char[][] tableroDisparos = new char[10][10];
 
         System.out.println("""
                 Mapa de """ + " " + nombre);
 
-       inicializarTablero(tablero);
-       visualizarTablero(tablero, tableroDisparos);
+       inicializarTablero(tableroJugador);
+       inicializarTablero(tableroDisparos);
+       visualizarTablero(tableroJugador, tableroDisparos);
 
     }
                 //TABLERO:
 
-    public static void inicializarTablero(char[][] tablero){
-        for (int i = 0; i < tablero.length; i++){
-            for (int j = 0; j < tablero[i].length; j++)
-                tablero[i][j] = '~';
+    public static void inicializarTablero(char[][] tableroJugador){
+        for (int i = 0; i < tableroJugador.length; i++){
+            for (int j = 0; j < tableroJugador[i].length; j++)
+                tableroJugador[i][j] = '~';
         }
     }
-    public static void visualizarTablero(char[][] tablero, char[][] tableroDisparos){
-        char letra = 'A';
-        char siguienteLetra = (char) (letra+1);
-        for (int i = 0; i < tableroDisparos.length; i++){
-            System.out.print((char) (letra + 1));
-        }
+    public static void visualizarTablero(char[][] tableroJugador, char[][] tableroDisparos){
+
         for (int i = 0; i < tableroDisparos.length; i++){
             for (int j = 0; j < tableroDisparos[i].length; j++){
-                System.out.print(tableroDisparos[i][j]);
+                System.out.print(tableroDisparos[i][j] + " ");
             }
             System.out.println();
+        }
+
+        int numeros = 0;
+        for (int i = 0; i < tableroDisparos.length; i++){
+            System.out.print(numeros + i + " ");
         }
     }
 }
