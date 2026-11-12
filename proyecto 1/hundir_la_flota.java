@@ -16,15 +16,11 @@ public class hundir_la_flota {
         char[][] tableroJugador = new char[10][10];
         char[][] tableroDisparos = new char[10][10];
 
-        System.out.println("""
-                Mapa de """ + " " + nombre);
-
-       inicializarTablero(tableroJugador);
-       inicializarTablero(tableroDisparos);
-       visualizarTablero(tableroJugador, tableroDisparos);
-
+        inicializarTablero(tableroJugador);
+        inicializarTablero(tableroDisparos);
+        visualizarTablero(tableroJugador, tableroDisparos, nombre);
     }
-                //TABLERO:
+    //CHAR DEL TABLERO
 
     public static void inicializarTablero(char[][] tableroJugador){
         for (int i = 0; i < tableroJugador.length; i++){
@@ -32,18 +28,42 @@ public class hundir_la_flota {
                 tableroJugador[i][j] = '~';
         }
     }
-    public static void visualizarTablero(char[][] tableroJugador, char[][] tableroDisparos){
 
-        for (int i = 0; i < tableroDisparos.length; i++){
+    public static void visualizarTablero(char[][] tableroJugador, char[][] tableroDisparos, String nombre){
+        //PRIMER MAPA
+        char letra = 'A';
+        System.out.print("Mapa de " + nombre);
+        System.out.print("                Mapa del Rival");
+        System.out.println();
+        for (int i = 0; i < tableroJugador.length; i++){
+            System.out.print((char) (letra + i) + " ");
+            for (int j = 0; j < tableroJugador[i].length; j++){
+                System.out.print(tableroJugador[i][j] + " ");
+            }
+            //SEGUNDO MAPA
+            System.out.print("    ");
+            System.out.print((char) (letra + i) + " ");
             for (int j = 0; j < tableroDisparos[i].length; j++){
                 System.out.print(tableroDisparos[i][j] + " ");
             }
             System.out.println();
         }
 
+        //Números mapa 1
+
+        System.out.print("  ");
         int numeros = 0;
-        for (int i = 0; i < tableroDisparos.length; i++){
+        for (int i = 0; i < 10; i++){
             System.out.print(numeros + i + " ");
+        }
+
+        //Números mapa 2
+
+        System.out.print("  ");
+        System.out.print("    ");
+        for (int i = 0; i < 10; i++){
+            System.out.print(numeros + i + " ");
+
         }
     }
 }
