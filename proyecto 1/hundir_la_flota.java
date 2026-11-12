@@ -32,8 +32,8 @@ public class hundir_la_flota {
     public static void visualizarTablero(char[][] tableroJugador, char[][] tableroDisparos, String nombre){
         //PRIMER MAPA
         char letra = 'A';
-        System.out.print("Mapa de " + nombre);
-        System.out.print("                Mapa del Rival");
+        System.out.print("    Mapa de " + nombre);
+        System.out.print("            Mapa del Rival");
         System.out.println();
         for (int i = 0; i < tableroJugador.length; i++){
             System.out.print((char) (letra + i) + " ");
