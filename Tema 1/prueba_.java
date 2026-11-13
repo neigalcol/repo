@@ -24,3 +24,16 @@ public class prueba_ {
         }
     }
 }
+
+    public static void main(String[] args) {
+        int numero = 12;
+        long resultado = fibonacci(numero);
+        System.out.println("El Fibonacci de " + numero + " es: " + resultado);
+    }
+
+    public static long fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
