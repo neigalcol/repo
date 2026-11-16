@@ -15,20 +15,15 @@ public class hundir_la_flota {
         char[][] tableroDisparos = new char[10][10];
         char[][] tableroPC = new char[10][10];
         char[][] tableroDisparosPc = new char[10][10];
-        int longitudBarco;
-        int fila;
-        int columna;
-        int orientacion;
 
         String nombre = leerNombre();
         inicializarTablero(tableroJugador);
         inicializarTablero(tableroDisparos);
         visualizarTablero(tableroJugador, tableroDisparos);
-        int[] coordenadas = leerCoordenadas("""
+        leerCoordenadas("""
                 
                 
                 Introduce la coordenada (fila, columna): """);
-        int guardarOrientacion = leerOrientacion();
 
     }
     public static String leerNombre(){
@@ -93,18 +88,15 @@ public class hundir_la_flota {
 
         boolean valida = false;
 
-        // Leer coordenadas que introduce el usuario, primero fila (letra) y despues columna (numero)
         do {
             System.out.println(mensaje);
             String coordenada = teclado.nextLine();
-            coordenada = coordenada.toUpperCase();
             if (coordenada.length() == 2){
                 if (coordenada.charAt(0) >= 'A' && coordenada.charAt(0) <= 'J'){
                     if (coordenada.charAt(1) >= '0' && coordenada.charAt(1) <= '9'){
                         fila = coordenada.charAt(0) - 'A';
                         columna = coordenada.charAt(1) - '0';
                         valida = true;
-
                     }
                 }
             }
@@ -113,40 +105,6 @@ public class hundir_la_flota {
             }
         }while(!valida);
 
-
         return new int []{fila, columna};
     }
-    public static int leerOrientacion (){
-        int orientacion = 0;
-        boolean orient = false;
-
-        do {
-            System.out.println("¿Hacia donde quieres orientar el barco? (H, V)");
-            String elegirOrientacion = teclado.nextLine();
-            elegirOrientacion = elegirOrientacion.toUpperCase();
-            if (elegirOrientacion.equals("H")){
-                orientacion = 1;
-                orient = true;
-            } else if (elegirOrientacion.equals("V")){
-                orientacion = 0;
-                orient = true;
-            } else {
-                System.out.println("Dirección no válida, introducela de nuevo (H,V)");
-            }
-        } while (!orient);
-
-        return orientacion;
-    }
-
-    public static boolean cabeBarco(char[][] tablero, int longitudBarco, int fila, int columna, int orientacion){
-        boolean cabe = false;
-        if (orientacion == 1){
-            longitudBarco <= tablero[0].length;
-        }else if (orientacion == 0){
-            tablero.length;
-
-        }
-    }
-
-
 }
