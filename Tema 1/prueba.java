@@ -3,12 +3,14 @@ import java.util.Scanner;
  * Autor: ... · Fecha: ... */
 public class prueba {
     public static void main(String[] args) {
-        final double IVA = 0.21; // constante: el IVA general
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Precio sin IVA: ");
-        double base = sc.nextDouble();
-        double total = base * (1 + IVA); // expresión numérica
-        System.out.printf("Precio final: %.2f euros%n", total);
-        sc.close();
+        double num1 = 2 + 1;
+        System.out.println(num1 + 0.02); // la consola debe mostrar 3.02
+        double num2 = num1;
+        System.out.println(num2); // la consola debe mostrar 3
+        System.out.println(num1 + 0.03); // la consola debe mostrar  3.03
+
+        double num3 = num2;
+        System.out.println(num3); // la consola debe mostrar 3.0
     }
+
 }
