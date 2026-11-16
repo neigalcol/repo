@@ -21,10 +21,9 @@ public class hundir_la_flota {
         char[][] tableroDisparosPc = new char[10][10];
 
         int[] longitudBarco = {4, 3, 3, 2, 2, 1};
-        int[] columna;
-        int[] fila;
 
-        String nombre = leerNombre();
+        String usuario = leerNombre();
+
 
         inicializarTablero(tableroJugador);
         inicializarTablero(tableroDisparos);
@@ -33,25 +32,27 @@ public class hundir_la_flota {
 
         visualizarTablero(tableroJugador, tableroDisparos);
 
-        int[] coordenadas = leerCoordenada(
-                "Introduce la coordenada (fila, columna): ");
+        int[] coordenadas = leerCoordenada("""
+                
+                Introduce la coordenada (fila, columna):""");
 
         int orientacion = leerOrientacion();
-        boolean resultadoCabeBarco = cabeBarco(tableroJugador, longitudBarco[0], coordenadas[0], coordenadas[1], orientacion);
-        hayColision(tableroJugador, longitudBarco, fila, columna, orientacion);    }
-
+        cabeBarco(tableroJugador, longitudBarco[0], coordenadas[0], coordenadas[1], orientacion);
+        hayColision(tableroJugador, longitudBarco[0], coordenadas[0], coordenadas[1], orientacion);
+        boolean colocarBarcoJugador = colocarBarco(tableroJugador, longitudBarco[0], coordenadas[0], coordenadas[1], orientacion, jugador);
+    }
     // ===== ENTRADA =====
 
     public static String leerNombre() {
 
-        String nombre;
+        String jugador;
 
         do {
             System.out.println("Introduce tu nombre: ");
-            nombre = teclado.nextLine();
-        } while (nombre.length() == 0);
+            jugador = teclado.nextLine();
+        } while (jugador.length() == 0);
 
-        return nombre;
+        return jugador;
     }
 
     public static int[] leerCoordenada(String mensaje) {
@@ -116,7 +117,6 @@ public class hundir_la_flota {
                 System.out.println(
                         "Dirección no válida, introdúcela de nuevo");
             }
-
         } while (!orient);
 
         return orientacion;
@@ -131,7 +131,6 @@ public class hundir_la_flota {
             }
         }
     }
-
     public static void visualizarTablero(
             char[][] tableroJugador, char[][] tableroDisparos) {
 
@@ -158,7 +157,6 @@ public class hundir_la_flota {
 
             System.out.println();
         }
-
         // Números mapa 1
 
         System.out.print("  ");
@@ -167,7 +165,6 @@ public class hundir_la_flota {
         for (int i = 0; i < 10; i++) {
             System.out.print(numeros + i + " ");
         }
-
         // Números mapa 2
 
         System.out.print("      ");
@@ -201,21 +198,45 @@ public class hundir_la_flota {
                             return true;
                         }
                 break;
-                }
-
             case 0:
                     for (int i = 0; i < longitudBarco; i++)
                         if (tableroJugador[fila + i][columna] == 'B') {
                             return true;
-
-                            break;
                         }
-
-
-
+                    break;
         }
         return false;
     }
+    public static boolean colocarBarco(char[][] tableroJugador, int longitudBarco, int fila, int columna, int orientacion, boolean jugador){
+        if (!cabeBarco(tableroJugador, longitudBarco, fila, columna, orientacion)){
+            if (jugador){
+                System.out.println("El barco no cabe ");
+            }
+            return false;
+        }
+        if (hayColision(tableroJugador, longitudBarco, fila, columna, orientacion)){
+            if (jugador){
+                System.out.println("El barco choca con otro");
+            }
+            return false;
+        }
+        switch (orientacion){
+            case 1:
+                for (int i = 0; i < longitudBarco; i++){
+                    tableroJugador[fila][columna + i] = 'B';
+                }
+                break;
+            case 0:
+                for (int i = 0; i < longitudBarco; i++){
+                    tableroJugador[fila + i][columna] = 'B';
+                }
+                break;
+        }
+
+
+        return true;
+    }
+
 }
 
 
