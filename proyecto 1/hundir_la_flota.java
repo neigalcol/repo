@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class hundir_la_flota {
 
     private static Scanner teclado = new Scanner(System.in);
@@ -31,6 +30,7 @@ public class hundir_la_flota {
         visualizarTablero(tableroJugador, tableroDisparos);
 
         colocarBarcosJugador(tableroJugador, tableroDisparos,longitudBarco);
+        colocarBarcosPC(tableroPC, longitudBarco);
     }
     // ===== ENTRADA =====
 
@@ -238,7 +238,7 @@ public class hundir_la_flota {
                 int[] coordenadas = leerCoordenada("""
                         
                         
-                        Introduce la coordenada (fila, columna):""" + "tamaño = " + longitud);
+                        Introduce la coordenada (fila (A-J), columna (0-9)):""" + " tamaño = " + longitud);
                 int orientacion = leerOrientacion();
 
                 if (colocarBarco(tableroJugador, longitudBarco[i], coordenadas[0], coordenadas[1], orientacion, true)) {
@@ -249,6 +249,27 @@ public class hundir_la_flota {
                 }
 
             } while (!colocado);
+        }
+    }
+    public static void colocarBarcosPC(char[][] tableroJugador, int[] longitudBarco){
+
+        for (int i = 0; i < longitudBarco.length; i++){
+            boolean resultado = false;
+
+            while (resultado == false){
+                int filaPC = (int) (Math.random() * 10);
+                int columnaPC = (int) (Math.random() * 10);
+                int orientacionPC = (int) (Math.random() * 2);
+                resultado = colocarBarco(tableroJugador, longitudBarco[i], filaPC, columnaPC, orientacionPC, false);
+            }
+        }
+    }
+    public static boolean disparoJugador(char[][] tableroDisparos, char[][] tableroPC, String nombre){
+        System.out.println(nombre + ", dispara a alguna coordenada contraria (A-J)(0-9)");
+        boolean resultado = false;
+
+        for (int i = 0; i < tableroDisparos.length; i++){
+
         }
     }
 }
